@@ -26,9 +26,7 @@ function App() {
   }, []);
 
   //FUNCIONES ROUTER
-  const findCharacter = (id) => {
-    return characters.find((oneCharacter) => oneCharacter.id === parseInt(id));
-  };
+
   // FUNCIONES HANDLER
   const handleSearch = (value) => {
     setSeachByName(value);
@@ -58,10 +56,8 @@ function App() {
           }
         />
         <Route
-          path="/character/:characterId"
-          element={
-            <CharacterDetail findCharacter={findCharacter}></CharacterDetail>
-          }
+          path="/CharacterDetail/:id"
+          element={<CharacterDetail characters={filteredCharacters} />}
         />
       </Routes>
     </>

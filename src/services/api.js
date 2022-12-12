@@ -1,19 +1,22 @@
 const callToApi = () => {
-  return fetch('https://rickandmortyapi.com/api/character?')
+  return fetch(
+    'https://raw.githubusercontent.com/Adalab/rick-y-morty/master/data/rick-y-morty.json'
+  )
     .then((response) => response.json())
-    .then((data) => {
-      const cleanData = data.results.map((character) => {
+    .then((response) => {
+      const cleanData = response.results.map((character) => {
         return {
-          image: character.image,
+          id: character.id,
+          img: character.image,
           name: character.name,
           species: character.species,
-          id: character.id,
           origin: character.origin.name,
-          episode: character.episode.length,
           status: character.status,
+          episodes: character.episode.length,
         };
       });
       return cleanData;
     });
 };
 export default callToApi;
+//cambiar por 'https://rickandmortyapi.com/api/character?'

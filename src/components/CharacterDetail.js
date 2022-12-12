@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
-function CharacterDetail(props) {
-  const params = useParams();
-  const characterFound = props.findCharacter(params.characterId);
+
+const CharacterDetail = ({ characters }) => {
+  const { id } = useParams();
+  const characterFound = characters.find((each) => each.id === parseInt(id));
+
   return (
     <>
       <section>
@@ -24,5 +26,5 @@ function CharacterDetail(props) {
       </section>
     </>
   );
-}
+};
 export default CharacterDetail;
