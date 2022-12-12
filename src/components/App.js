@@ -2,13 +2,14 @@ import { useEffect, useState } from 'react';
 import '../styles/App.scss';
 //SERVICES
 import callToApi from '../services/api';
+// import ls from '../services/localStorage';
 
 //COMPONENTS
 import CharacterList from './CharacterList';
 import Filters from './Filters';
-
+import CharacterDetail from './CharacterDetail';
 //ROUTES
-//import { Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 function App() {
   // VARIABLES ESTADO
@@ -16,7 +17,7 @@ function App() {
   const [searchByName, setSeachByName] = useState('');
 
   // USEEFFECT
-
+  //API
   useEffect(() => {
     callToApi().then((data) => {
       setCharacters(data); //VE que se modifica con data
@@ -42,8 +43,24 @@ function App() {
   return (
     <div className="App">
       <h1>Rick & Morty</h1>
-      <Filters handleSearch={handleSearch} />
-      <CharacterList characters={filteredCharacters} />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <Filters
+                handleSearch={handleSearch}
+                searchByName={searchByName}
+              />
+              <CharacterList characters={filteredCharacters} />
+            </>
+          }
+        />
+        <Route
+          path="/CharacterDetail/:id"
+          element={<CharacterDetail characters={filteredCharacters} />}
+        />
+      </Routes>
     </div>
     //CharacterDatail en Routes
   );

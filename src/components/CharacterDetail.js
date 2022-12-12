@@ -1,15 +1,18 @@
 import { Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 const CharacterDetail = ({ character }) => {
+  const { id } = useParams();
+  const searchCaracter = character.find((each) => each.id === parseInt(id));
   return (
     <section>
-      <article id={character.id}>
-        <img src={character.img} alt={`Foto de ${character.name}`} />
-        <h2>{character.name}</h2>
-        <p>Specie: {character.species}</p>
+      <article id={searchCaracter.id}>
+        <img src={searchCaracter.img} alt={`Foto de ${searchCaracter.name}`} />
+        <h2>{searchCaracter.name}</h2>
+        <p>Specie: {searchCaracter.species}</p>
         <ul>
-          <li>Origin:{character.origin}</li>
-          <li>Status:{character.status}</li>
-          <li>Number of episodes:{character.episodes}</li>
+          <li>Origin:{searchCaracter.origin}</li>
+          <li>Status:{searchCaracter.status}</li>
+          <li>Number of episodes:{searchCaracter.episodes}</li>
         </ul>
       </article>
       <Link to={'/'}>Back to top</Link>
