@@ -1,7 +1,7 @@
+import callToApi from '../services/api';
+
 import { useEffect, useState } from 'react';
 import '../styles/App.scss';
-//SERVICES
-import callToApi from '../services/api';
 // import ls from '../services/localStorage';
 
 //COMPONENTS
@@ -19,12 +19,16 @@ function App() {
   // USEEFFECT
   //API
   useEffect(() => {
-    callToApi().then((data) => {
-      setCharacters(data); //VE que se modifica con data
+    callToApi().then((cleanData) => {
+      console.log(cleanData);
+      setCharacters(cleanData); //VE que se modifica con data
     });
   }, []);
 
   //FUNCIONES ROUTER
+  const findCharacter = (id) => {
+    return characters.find((oneCharacter) => oneCharacter.id === parseInt(id));
+  };
   // FUNCIONES HANDLER
   const handleSearch = (value) => {
     setSeachByName(value);
@@ -32,16 +36,13 @@ function App() {
   // FUNCIONES Y VARIABLES QUE AYUDEN A RENDERIZAR HTML
   const filteredCharacters = characters.filter((character) => {
     //filtrar array
-    if (searchByName !== '') {
-      return character.name.toLowerCase().includes(searchByName);
-    } else {
-      return true;
-    }
+
+    return character.name.toLowerCase().includes(searchByName.toLowerCase());
   });
   // HTML EN EL RETURN
 
   return (
-    <div className="App">
+    <>
       <h1>Rick & Morty</h1>
       <Routes>
         <Route
@@ -57,12 +58,13 @@ function App() {
           }
         />
         <Route
-          path="/CharacterDetail/:id"
-          element={<CharacterDetail characters={filteredCharacters} />}
+          path="/character/:characterId"
+          element={
+            <CharacterDetail findCharacter={findCharacter}></CharacterDetail>
+          }
         />
       </Routes>
-    </div>
-    //CharacterDatail en Routes
+    </>
   );
 }
 

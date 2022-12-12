@@ -1,15 +1,18 @@
 import { Link } from 'react-router-dom';
-const CharacterCard = ({ character }) => {
+function CharacterCard(props) {
   return (
-    <li key={character.id}>
-      <Link to={`/CharacterDetail/${character.id}`}>
-        <article id={character.id}>
-          <img src={character.img} alt={`Character ${character.name}`}></img>
-          <h2>Name: {character.name}</h2>
-          <p>Species: {character.species}</p>
+    <li key={props.character.id} className="card">
+      <Link to={`/CharacterDetail/${props.character.id}`}>
+        <article id={props.character.id}>
+          <img
+            src={props.character.img}
+            alt={`Character ${props.character.name}`}
+          ></img>
+          <h2>Name: {props.character.name}</h2>
+          <p>Species: {props.character.species}</p>
         </article>
       </Link>
     </li>
   );
-};
+}
 export default CharacterCard;
