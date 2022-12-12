@@ -1,30 +1,51 @@
-// import { useEffect, useState  } from 'react';
+import { useEffect, useState } from 'react';
 import '../styles/App.scss';
-// import getDataFromApi from '../services/api'
-// import { Routes, Route, Link, NavLink } from 'react-router-dom';
+//SERVICES
+import callToApi from '../services/api';
+
+//COMPONENTS
+import CharacterList from './CharacterList';
+import Filters from './Filters';
+
+//ROUTES
+//import { Routes, Route } from 'react-router-dom';
 
 function App() {
   // VARIABLES ESTADO
-  // USEEFFECT ?
-  // useEffect (()=>{
-  //   getDataFromApi().then((data)=>{
-  //     console.log(data);
-  //   })
+  const [characters, setCharacters] = useState([]);
+  const [searchByName, setSeachByName] = useState('');
 
-  // }); [])
+  // USEEFFECT
+
+  useEffect(() => {
+    callToApi().then((data) => {
+      setCharacters(data); //VE que se modifica con data
+    });
+  }, []);
+
   //FUNCIONES ROUTER
   // FUNCIONES HANDLER
-
+  const handleSearch = (value) => {
+    setSeachByName(value);
+  };
   // FUNCIONES Y VARIABLES QUE AYUDEN A RENDERIZAR HTML
-
+  const filteredCharacters = characters.filter((character) => {
+    //filtrar array
+    if (searchByName !== '') {
+      return character.name.toLowerCase().includes(searchByName);
+    } else {
+      return true;
+    }
+  });
   // HTML EN EL RETURN
 
   return (
     <div className="App">
-      <h1 className="title">Rellename!</h1>
-
-      {/* Aquí va tu código HTML. */}
+      <h1>Rick & Morty</h1>
+      <Filters handleSearch={handleSearch} />
+      <CharacterList characters={filteredCharacters} />
     </div>
+    //CharacterDatail en Routes
   );
 }
 
