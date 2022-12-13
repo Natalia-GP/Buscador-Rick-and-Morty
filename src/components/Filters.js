@@ -8,7 +8,7 @@ const Filters = ({ handleSearch, searchByName }) => {
   };
   return (
     <form onSubmit={handleSubmit}>
-      <label htmlFor="name">Seach</label>
+      <label htmlFor="name">Search</label>
       <input
         type="text"
         name="name"

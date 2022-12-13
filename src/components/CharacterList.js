@@ -1,14 +1,22 @@
 import CharacterCard from './CharacterCard';
 
-const CharacterList = ({ characters }) => {
+const CharacterList = ({ characters, searchByName }) => {
   const renderList = () => {
-    return characters.map((character) => {
-      return <CharacterCard character={character} key={character.id} />;
-    });
+    if (characters.length !== 0) {
+      return characters.map((character) => {
+        return <CharacterCard character={character} key={character.id} />;
+      });
+    } else {
+      return (
+        <p className="errorMasagge">
+          There is no charecter with {searchByName}.Try again
+        </p>
+      );
+    }
   };
   return (
-    <section>
-      <ul>{renderList()}</ul>
+    <section className="sectionCharacter">
+      <ul className="sectionCharacter__card">{renderList()}</ul>
     </section>
   );
 };

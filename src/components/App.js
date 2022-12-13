@@ -10,11 +10,12 @@ import Filters from './Filters';
 import CharacterDetail from './CharacterDetail';
 //ROUTES
 import { Routes, Route } from 'react-router-dom';
+import Header from './Header';
 
 function App() {
   // VARIABLES ESTADO
   const [characters, setCharacters] = useState([]);
-  const [searchByName, setSeachByName] = useState('');
+  const [searchByName, setSearchByName] = useState('');
 
   // USEEFFECT
   //API
@@ -29,19 +30,19 @@ function App() {
 
   // FUNCIONES HANDLER
   const handleSearch = (value) => {
-    setSeachByName(value);
+    setSearchByName(value);
   };
   // FUNCIONES Y VARIABLES QUE AYUDEN A RENDERIZAR HTML
   const filteredCharacters = characters.filter((character) => {
     //filtrar array
-
     return character.name.toLowerCase().includes(searchByName.toLowerCase());
   });
   // HTML EN EL RETURN
 
   return (
     <>
-      <h1>Rick & Morty</h1>
+      <Header></Header>
+      <h1>Characters</h1>
       <Routes>
         <Route
           path="/"
@@ -51,7 +52,10 @@ function App() {
                 handleSearch={handleSearch}
                 searchByName={searchByName}
               />
-              <CharacterList characters={filteredCharacters} />
+              <CharacterList
+                characters={filteredCharacters}
+                searchByName={searchByName}
+              />
             </>
           }
         />
