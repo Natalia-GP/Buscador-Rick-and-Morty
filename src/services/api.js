@@ -3,8 +3,8 @@ const callToApi = () => {
     'https://raw.githubusercontent.com/Adalab/rick-y-morty/master/data/rick-y-morty.json'
   )
     .then((response) => response.json())
-    .then((response) => {
-      const cleanData = response.results.map((character) => {
+    .then((data) => {
+      const cleanData = data.results.map((character) => {
         return {
           id: character.id,
           img: character.image,

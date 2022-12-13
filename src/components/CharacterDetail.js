@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 
-const CharacterDetail = ({ characters }) => {
-  const { id } = useParams();
-  const characterFound = characters.find((each) => each.id === parseInt(id));
+const CharacterDetail = (props) => {
+  const params = useParams();
+  const characterFound = props.findCharacter(params.id);
 
   return (
     <>

@@ -1,42 +1,64 @@
 import callToApi from '../services/api';
 
 import { useEffect, useState } from 'react';
-import '../styles/App.scss';
+// import '../styles/App.scss';
 // import ls from '../services/localStorage';
 
 //COMPONENTS
 import CharacterList from './CharacterList';
 import Filters from './Filters';
 import CharacterDetail from './CharacterDetail';
+import Header from './Header';
 //ROUTES
 import { Routes, Route } from 'react-router-dom';
-import Header from './Header';
 
 function App() {
   // VARIABLES ESTADO
+  //los personajes de la serie sacados de la Api
   const [characters, setCharacters] = useState([]);
+
+  //filterByName
   const [searchByName, setSearchByName] = useState('');
+  //filterByspecies
+  const [searchBySpecies, setSearchBySpecies] = useState('');
 
   // USEEFFECT
   //API
   useEffect(() => {
-    callToApi().then((cleanData) => {
-      console.log(cleanData);
-      setCharacters(cleanData); //VE que se modifica con data
+    callToApi().then((data) => {
+      console.log(data);
+      setCharacters(data); //VE que se modifica con data
     });
   }, []);
 
   //FUNCIONES ROUTER
 
   // FUNCIONES HANDLER
+  //filterByName
   const handleSearch = (value) => {
     setSearchByName(value);
   };
+  //filterBySpecies
+  const handleSpecies = (value) => {
+    setSearchBySpecies(value);
+  };
   // FUNCIONES Y VARIABLES QUE AYUDEN A RENDERIZAR HTML
-  const filteredCharacters = characters.filter((character) => {
-    //filtrar array
-    return character.name.toLowerCase().includes(searchByName.toLowerCase());
-  });
+  const findCharacter = (value) => {
+    return characters.find(
+      (character) => parseInt(character.id) === parseInt(value)
+    );
+  };
+  const filteredCharacters = () => {
+    return characters
+      .filter((character) =>
+        character.name.toLowerCase().includes(searchByName.toLowerCase())
+      )
+      .filter((character) =>
+        searchBySpecies === ''
+          ? true
+          : character.species.toLowerCase() === searchBySpecies.toLowerCase()
+      );
+  };
   // HTML EN EL RETURN
 
   return (
@@ -51,9 +73,11 @@ function App() {
               <Filters
                 handleSearch={handleSearch}
                 searchByName={searchByName}
+                searchBySpecies={searchBySpecies}
+                handleSpecies={handleSpecies}
               />
               <CharacterList
-                characters={filteredCharacters}
+                characters={filteredCharacters()}
                 searchByName={searchByName}
               />
             </>
@@ -61,7 +85,7 @@ function App() {
         />
         <Route
           path="/CharacterDetail/:id"
-          element={<CharacterDetail characters={filteredCharacters} />}
+          element={<CharacterDetail findCharacter={findCharacter} />}
         />
       </Routes>
     </>

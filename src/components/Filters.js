@@ -1,22 +1,25 @@
-const Filters = ({ handleSearch, searchByName }) => {
+import FilterByName from './FilterByName';
+import FilterBySpecies from './FilterBySpecies';
+
+function Filters(props) {
   const handleSubmit = (ev) => {
     ev.preventDefault();
   };
-  const handleInput = (ev) => {
-    ev.preventDefault();
-    handleSearch(ev.target.value.toLowerCase());
-  };
+
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="name">Search</label>
-      <input
-        type="text"
-        name="name"
-        id="name"
-        onInput={handleInput}
-        value={searchByName}
-      />
-    </form>
+    <section>
+      <form className="form" onSubmit={handleSubmit}>
+        <FilterByName
+          searchByName={props.searchByName}
+          handleSearch={props.handleSearch}
+        />
+        <FilterBySpecies
+          searchBySpecies={props.searchBySpecies}
+          handleSpecies={props.handleSpecies}
+          species={props.species}
+        />
+      </form>
+    </section>
   );
-};
+}
 export default Filters;
