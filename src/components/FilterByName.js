@@ -1,15 +1,18 @@
+import '../styles/components/FilterByName.scss';
 function FilterByName(props) {
   const handleInput = (ev) => {
     ev.preventDefault();
     props.handleSearch(ev.target.value.toLowerCase());
   };
   return (
-    <div className="form__text">
-      <label htmlFor="name">Search</label>
+    <div className="nameFilter">
+      <label htmlFor="name" className="nameFilter__search">
+        Search
+      </label>
       <input
         type="text"
         name="name"
-        className=""
+        className="nameFilter__input"
         id="name"
         onInput={handleInput}
         value={props.searchByName}

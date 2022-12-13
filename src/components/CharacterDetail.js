@@ -7,22 +7,31 @@ const CharacterDetail = (props) => {
 
   return (
     <>
-      <section>
-        <article id={characterFound.id}>
+      <section className="detailSection">
+        <article id={characterFound.id} className="detail__article">
           <img
+            className="detail__img"
             src={characterFound.img}
             alt={`Foto de ${characterFound.name}`}
             title={`Foto de ${characterFound.name}`}
           />
-          <h2>Name: {characterFound.name}</h2>
-          <p>Specie: {characterFound.species}</p>
-          <ul>
-            <li>Origin:{characterFound.origin}</li>
-            <li>Status:{characterFound.status}</li>
-            <li>Number of episodes:{characterFound.episodes}</li>
+          <h2 className="detail__name">Name: {characterFound.name}</h2>
+          <p className="detail__specie"> Specie: {characterFound.species}</p>
+          <ul className="detail__list">
+            <li className="detail__list--origin">
+              Origin:{characterFound.origin}
+            </li>
+            <li className="detail__list--status">
+              Status:{characterFound.status}
+            </li>
+            <li className="detail__list--number">
+              Number of episodes:{characterFound.episodes}
+            </li>
           </ul>
         </article>
-        <Link to={'/'}>Back to top</Link>
+        <Link to={'/'} className="toTop">
+          Back to top
+        </Link>
       </section>
     </>
   );

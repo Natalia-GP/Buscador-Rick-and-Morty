@@ -8,8 +8,9 @@ const CharacterList = ({ characters, searchByName }) => {
       });
     } else {
       return (
-        <p className="errorMasagge">
-          There is no charecter with {searchByName}.Try again
+        <p className="errorMsg">
+          There is no character with{' '}
+          <span className="errorMsg__name">{searchByName} </span>.Try again
         </p>
       );
     }

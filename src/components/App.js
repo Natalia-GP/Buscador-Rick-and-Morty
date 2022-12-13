@@ -1,7 +1,7 @@
 import callToApi from '../services/api';
 
 import { useEffect, useState } from 'react';
-// import '../styles/App.scss';
+import '../styles/App.scss';
 // import ls from '../services/localStorage';
 
 //COMPONENTS
@@ -64,7 +64,6 @@ function App() {
   return (
     <>
       <Header></Header>
-      <h1>Characters</h1>
       <Routes>
         <Route
           path="/"

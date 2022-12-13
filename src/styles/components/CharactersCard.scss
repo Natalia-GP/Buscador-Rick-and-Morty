@@ -1,0 +1,29 @@
+@import '../core/variables';
+@import '../core/reset';
+@import '../core/mixins';
+.card {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 1rem;
+
+  &__item {
+    background-color: rgb(19, 161, 66);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    &--name {
+      font-size: 1.5rem;
+    }
+    &--species {
+      padding-bottom: 2rem;
+    }
+
+    &--img {
+      width: 80%;
+      margin-bottom: 0.5rem;
+      margin-top: 1rem;
+    }
+  }
+}

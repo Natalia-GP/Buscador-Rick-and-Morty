@@ -1,0 +1,24 @@
+@import '../core/variables';
+@import '../core/reset';
+@import '../core/mixins';
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &__title {
+    display: none;
+  }
+  &__link {
+    z-index: 50;
+    background-color: rgb(5, 201, 54);
+    &--logo {
+      width: 80rem;
+    }
+  }
+}
+.MainCh {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
