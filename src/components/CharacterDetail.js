@@ -9,11 +9,11 @@ const CharacterDetail = (props) => {
   //icono vivo o muerto
   const deadOrAlive = () => {
     if (characterFound.status === 'Dead') {
-      return <i class="fa-regular fa-face-dizzy"></i>;
+      return <i className="fa-regular fa-face-dizzy"></i>;
     } else if (characterFound.status === 'Alive') {
-      return <i class="fa-solid fa-heart-pulse"></i>;
+      return <i className="fa-solid fa-heart-pulse"></i>;
     } else {
-      return <i class="fa-solid fa-question"></i>;
+      return <i className="fa-solid fa-question"></i>;
     }
   };
 
