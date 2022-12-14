@@ -3,19 +3,16 @@
 @import '../core/mixins';
 .card {
   list-style: none;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  @include flex;
   text-align: center;
   margin-bottom: 1rem;
 
   &__item {
-    border-color: aqua;
+    border-color: $main-color;
     border-width: 7px;
     border-style: ridge;
     font-family: 'Martian Mono', monospace;
-    color: aqua;
+    color: $main-color;
     &--name {
       font-size: 1rem;
 

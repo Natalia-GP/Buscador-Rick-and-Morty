@@ -1,8 +1,10 @@
 @import 'core/reset';
+@import 'core/variables.scss';
 
 body {
   background-color: black;
   color: azure;
+  font-family: $font-default;
 }
 .h1 {
   display: flex;
