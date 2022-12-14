@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import '../styles/components/CharactersCard.scss';
+
 function CharacterCard(props) {
   return (
     <li key={props.character.id} className="card">

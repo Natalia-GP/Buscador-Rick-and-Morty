@@ -11,7 +11,7 @@
     border-color: $main-color;
     border-width: 7px;
     border-style: ridge;
-    font-family: 'Martian Mono', monospace;
+    font-family: $font-default;
     color: $main-color;
     &--name {
       font-size: 1rem;

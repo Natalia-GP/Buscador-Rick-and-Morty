@@ -6,6 +6,17 @@ const CharacterDetail = (props) => {
   const params = useParams();
   const characterFound = props.findCharacter(params.id);
 
+  //icono vivo o muerto
+  const deadOrAlive = () => {
+    if (characterFound.status === 'Dead') {
+      return <i class="fa-regular fa-face-dizzy"></i>;
+    } else if (characterFound.status === 'Alive') {
+      return <i class="fa-solid fa-heart-pulse"></i>;
+    } else {
+      return <i class="fa-solid fa-question"></i>;
+    }
+  };
+
   return (
     <>
       <section className="detail">
@@ -17,13 +28,14 @@ const CharacterDetail = (props) => {
             title={`Foto de ${characterFound.name}`}
           />
           <h2 className="detail__name">Name: {characterFound.name}</h2>
-          <p className="detail__specie"> Specie: {characterFound.species}</p>
+          <p className="detail__specie">Specie: {characterFound.species}</p>
           <ul className="detail__list">
             <li className="detail__list--origin">
               Origin:{characterFound.origin}
             </li>
             <li className="detail__list--status">
               Status:{characterFound.status}
+              <span> {deadOrAlive()}</span>
             </li>
             <li className="detail__list--number">
               Number of episodes:{characterFound.episodes}

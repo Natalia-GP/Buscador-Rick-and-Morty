@@ -15,10 +15,12 @@ const CharacterList = ({ characters, searchByName }) => {
       );
     }
   };
+
   return (
     <section className="sectionCharacter">
       <ul className="sectionCharacter__card">{renderList()}</ul>
     </section>
   );
 };
+
 export default CharacterList;
