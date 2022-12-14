@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
+import '../styles/components/CharacterDetail.scss';
 
 const CharacterDetail = (props) => {
   const params = useParams();
@@ -7,7 +8,7 @@ const CharacterDetail = (props) => {
 
   return (
     <>
-      <section className="detailSection">
+      <section className="detail">
         <article id={characterFound.id} className="detail__article">
           <img
             className="detail__img"

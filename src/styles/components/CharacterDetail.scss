@@ -1,0 +1,27 @@
+@import '../core/variables';
+@import '../core/reset';
+@import '../core/mixins';
+
+.detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__article {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    border-color: aqua;
+    border-width: 7px;
+    border-style: ridge;
+    font-family: 'Martian Mono', monospace;
+  }
+  &__img {
+    width: 300px;
+    padding: 40px;
+  }
+  &__list {
+  }
+}
