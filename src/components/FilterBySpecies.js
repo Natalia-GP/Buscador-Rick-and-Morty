@@ -1,4 +1,5 @@
 import '../styles/components/FilterBySpecies.scss';
+
 function FilterBySpecies(props) {
   const handleInput = (ev) => {
     props.handleSpecies(ev.target.value);
