@@ -1,6 +1,7 @@
 import FilterByName from './FilterByName';
 import FilterBySpecies from './FilterBySpecies';
 import FilterByStatus from './FilterByStatus';
+import FilterByGender from './FilterByGender';
 
 function Filters(props) {
   const handleSubmit = (ev) => {
@@ -23,6 +24,11 @@ function Filters(props) {
           serchByStatus={props.serchByStatus}
           handleStatus={props.handleStatus}
           status={props.status}
+        />
+        <FilterByGender
+          searchByGender={props.searchByGender}
+          handleGender={props.handleGender}
+          gender={props.gender}
         />
       </form>
     </section>
