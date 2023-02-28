@@ -17,7 +17,7 @@ function FilterByStatus(props) {
       >
         <option value="Alive">Alive</option>
         <option value="Dead">Dead</option>
-        <option value="unknown">unknown</option>
+        <option value="unknown">Unknown</option>
       </select>
     </div>
   );

@@ -23,7 +23,7 @@ function App() {
   const [searchBySpecies, setSearchBySpecies] = useState('');
 
   const [searchByStatus, setsearchByStatus] = useState('');
-
+  const [searchByGender, setsearchByGender] = useState('');
   // USEEFFECT
   //API
   useEffect(() => {
@@ -47,6 +47,10 @@ function App() {
   const handleStatus = (value) => {
     setsearchByStatus(value);
   };
+  const handleGender = (value) => {
+    setsearchByGender(value);
+  };
+
   // FUNCIONES Y VARIABLES QUE AYUDEN A RENDERIZAR HTML
   const findCharacter = (value) => {
     return characters.find(
@@ -67,6 +71,9 @@ function App() {
         searchByStatus === ''
           ? true
           : character.status.toLowerCase() === searchByStatus.toLowerCase()
+      )
+      .filter((characters) =>
+        searchByGender === '' ? true : characters.gender === searchByGender
       );
   };
 
@@ -87,6 +94,8 @@ function App() {
                 handleSpecies={handleSpecies}
                 handleStatus={handleStatus}
                 searchByStatus={searchByStatus}
+                handleGender={handleGender}
+                searchByGender={searchByGender}
               />
               <CharacterList
                 characters={filteredCharacters()}

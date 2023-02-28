@@ -13,10 +13,10 @@ const callToApi = () => {
           origin: character.origin.name,
           status: character.status,
           episodes: character.episode.length,
+          gender: character.gender,
         };
       });
       return cleanData;
     });
 };
 export default callToApi;
-//cambiar por 'https://rickandmortyapi.com/api/character?'
