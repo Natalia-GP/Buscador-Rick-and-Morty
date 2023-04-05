@@ -5,7 +5,7 @@
 El ejercicio consiste en desarrollar una página web con un listado de personajes de Rick and Morty, que
 podemos filtrar por el nombre del personaje. Vamos a usar React para realizarlo.
 
-![This is an image](https://larepublica.pe/resizer/Bt3dupM88xy6988X5tto2v7GtAU=/1200x660/top/arc-anglerfish-arc2-prod-gruporepublica.s3.amazonaws.com/public/ONQHIVFLKVAKDKQC5WEQA4MMMI.jpg)
+![This is an image](https://arc-anglerfish-arc2-prod-infobae.s3.amazonaws.com/public/YHAUBUYW75FZVLG4Z4WL5S6LMY.jpg)
 
 Vamos de definir las distintas partes del ejercicio:
 
